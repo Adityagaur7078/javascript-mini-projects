@@ -7,7 +7,6 @@ let habitList = document.querySelector("#habitList");
 // code
 let habits = [];
 
-
 // render function
 function renderHabits() {
 
@@ -22,6 +21,11 @@ function renderHabits() {
 
         // add class
         div.classList.add("habit-item");
+
+        // completed class
+        if (habit.completed) {
+            div.classList.add("completed");
+        }
 
         // add content
         div.innerHTML = `
@@ -51,16 +55,32 @@ function renderHabits() {
         // show on screen
         habitList.appendChild(div);
 
+        // delete button
         div.querySelector(".delete-btn").addEventListener("click", function () {
-        habits = habits.filter(function(item){
-            return item.id !== habit.id;
-        })
-        renderHabits();
-    })
+
+            habits = habits.filter(function (item) {
+
+                return item.id !== habit.id;
+
+            });
+
+            renderHabits();
+
+        });
+
+        // complete button
+        div.querySelector(".complete-btn").addEventListener("click", function () {
+
+            // toggle completed
+            habit.completed = !habit.completed;
+
+            // render again
+            renderHabits();
+
+        });
 
     });
 
-    
 }
 
 // button Add Habits
@@ -84,7 +104,9 @@ button.addEventListener("click", function () {
     };
 
     habits.push(habit);
+
     renderHabits();
+
     console.log(habits);
 
     input.value = "";
@@ -92,4 +114,3 @@ button.addEventListener("click", function () {
     select.selectedIndex = 0;
 
 });
-
