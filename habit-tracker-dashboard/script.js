@@ -3,9 +3,45 @@ let input = document.querySelector("#habitInput");
 let select = document.querySelector("#category");
 let button = document.querySelector("#addBtn");
 let habitList = document.querySelector("#habitList");
+let totalHabits = document.querySelector("#totalHabits");
+let completedHabits = document.querySelector("#completedHabits");
+let progressText = document.querySelector("#progressText");
+let progressBar = document.querySelector(".progress-bar");
 
 // code
 let habits = [];
+
+// load data from localStorage
+let storedData = localStorage.getItem("data");
+
+if (storedData) {
+    habits = JSON.parse(storedData);
+    renderHabits();
+    updateStats()
+}
+
+// save data function
+function saveData() {
+    localStorage.setItem("data", JSON.stringify(habits));
+}
+
+
+// Update Stats function
+function updateStats() {
+     
+
+    totalHabits.textContent = habits.length
+    let completed = habits.filter(function (e){
+        return e.completed;
+    });
+
+    completedHabits.textContent = completed.length
+
+    let progressPercentage = progressBar.style.width = `${(completed.length/habits.length)*100}%`
+
+    progressText.textContent = `${progressPercentage}`
+}
+
 
 // render function
 function renderHabits() {
@@ -64,6 +100,8 @@ function renderHabits() {
 
             });
 
+            saveData();
+            updateStats()
             renderHabits();
 
         });
@@ -74,6 +112,8 @@ function renderHabits() {
             // toggle completed
             habit.completed = !habit.completed;
 
+            saveData();
+            updateStats()
             // render again
             renderHabits();
 
@@ -105,10 +145,11 @@ button.addEventListener("click", function () {
 
     habits.push(habit);
 
+    saveData();
+
     renderHabits();
 
-    console.log(habits);
-
+    updateStats()
     input.value = "";
 
     select.selectedIndex = 0;
