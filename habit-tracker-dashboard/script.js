@@ -3,45 +3,95 @@ let input = document.querySelector("#habitInput");
 let select = document.querySelector("#category");
 let button = document.querySelector("#addBtn");
 let habitList = document.querySelector("#habitList");
+
 let totalHabits = document.querySelector("#totalHabits");
 let completedHabits = document.querySelector("#completedHabits");
+
 let progressText = document.querySelector("#progressText");
 let progressBar = document.querySelector(".progress-bar");
 
+let filterBtn = document.querySelectorAll(".filter-btn");
+
+let streak = document.querySelector("#streak");
+
 // code
 let habits = [];
+
+let currentFilter = "all";
 
 // load data from localStorage
 let storedData = localStorage.getItem("data");
 
 if (storedData) {
+
     habits = JSON.parse(storedData);
+
     renderHabits();
-    updateStats()
+
+    updateStats();
+
 }
 
 // save data function
 function saveData() {
+
     localStorage.setItem("data", JSON.stringify(habits));
+
 }
 
-
-// Update Stats function
+// update stats function
 function updateStats() {
-     
 
-    totalHabits.textContent = habits.length
-    let completed = habits.filter(function (e){
+    // total habits
+    totalHabits.textContent = habits.length;
+
+    // completed habits
+    let completed = habits.filter(function (e) {
+
         return e.completed;
+
     });
 
-    completedHabits.textContent = completed.length
+    completedHabits.textContent = completed.length;
 
-    let progressPercentage = progressBar.style.width = `${(completed.length/habits.length)*100}%`
+    // progress percentage
+    let progressPercent = 0;
 
-    progressText.textContent = `${progressPercentage}`
+    if (habits.length > 0) {
+
+        progressPercent = Math.floor(
+            (completed.length / habits.length) * 100
+        );
+
+    }
+
+    // update progress text
+    progressText.textContent = `${progressPercent}% Completed`;
+
+    // update progress bar
+    progressBar.style.width = `${progressPercent}%`;
+
+    // streak logic
+    let streakCount = 0;
+
+    habits.forEach(function (habit) {
+
+        if (habit.completed) {
+
+            streakCount++;
+
+        } else {
+
+            streakCount = 0;
+
+        }
+
+    });
+
+    // update streak UI
+    streak.textContent = streakCount;
+
 }
-
 
 // render function
 function renderHabits() {
@@ -49,8 +99,33 @@ function renderHabits() {
     // clear old UI
     habitList.innerHTML = "";
 
-    // loop through array
-    habits.forEach(function (habit) {
+    // filtered habits
+    let filteredHabits = habits;
+
+    // completed filter
+    if (currentFilter === "completed") {
+
+        filteredHabits = habits.filter(function (habit) {
+
+            return habit.completed;
+
+        });
+
+    }
+
+    // pending filter
+    else if (currentFilter === "pending") {
+
+        filteredHabits = habits.filter(function (habit) {
+
+            return !habit.completed;
+
+        });
+
+    }
+
+    // loop through filtered habits
+    filteredHabits.forEach(function (habit) {
 
         // create div
         let div = document.createElement("div");
@@ -60,7 +135,9 @@ function renderHabits() {
 
         // completed class
         if (habit.completed) {
+
             div.classList.add("completed");
+
         }
 
         // add content
@@ -101,8 +178,10 @@ function renderHabits() {
             });
 
             saveData();
-            updateStats()
+
             renderHabits();
+
+            updateStats();
 
         });
 
@@ -113,9 +192,10 @@ function renderHabits() {
             habit.completed = !habit.completed;
 
             saveData();
-            updateStats()
-            // render again
+
             renderHabits();
+
+            updateStats();
 
         });
 
@@ -123,24 +203,50 @@ function renderHabits() {
 
 }
 
-// button Add Habits
+// filter buttons
+filterBtn.forEach(function (btn) {
+
+    btn.addEventListener("click", function () {
+
+        let text = btn.textContent.toLowerCase();
+
+        currentFilter = text;
+
+        renderHabits();
+
+    });
+
+});
+
+// add habit
 button.addEventListener("click", function () {
 
     if (input.value === "") {
+
         alert("Enter a Habit");
+
         return;
+
     }
 
     if (select.value === "") {
+
         alert("Select Category");
+
         return;
+
     }
 
     let habit = {
+
         id: Date.now(),
+
         title: input.value,
+
         category: select.value,
+
         completed: false
+
     };
 
     habits.push(habit);
@@ -149,7 +255,8 @@ button.addEventListener("click", function () {
 
     renderHabits();
 
-    updateStats()
+    updateStats();
+
     input.value = "";
 
     select.selectedIndex = 0;
