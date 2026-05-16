@@ -2,15 +2,20 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CyberVault</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Remix Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+
 </head>
 
 <body>
@@ -18,6 +23,7 @@
     <div class="app">
 
         <!-- SIDEBAR -->
+
         <aside class="sidebar">
 
             <div class="logo">
@@ -31,54 +37,32 @@
             <nav class="menu">
 
                 <a href="#" class="active">
+
                     <i class="ri-dashboard-line"></i>
+
                     Dashboard
+
                 </a>
 
                 <a href="#">
+
                     <i class="ri-sticky-note-line"></i>
+
                     Notes
-                </a>
 
-                <a href="#">
-                    <i class="ri-star-line"></i>
-                    Favorites
-                </a>
-
-                <a href="#">
-                    <i class="ri-lock-line"></i>
-                    Locked
-                </a>
-
-                <a href="#">
-                    <i class="ri-settings-3-line"></i>
-                    Settings
                 </a>
 
             </nav>
-
-            <div class="sidebar-bottom">
-
-                <div class="security-card">
-
-                    <i class="ri-shield-check-line"></i>
-
-                    <div>
-                        <h3>Vault Secured</h3>
-                        <p>256-bit encrypted</p>
-                    </div>
-
-                </div>
-
-            </div>
 
         </aside>
 
 
         <!-- MAIN -->
+
         <main class="main">
 
             <!-- TOPBAR -->
+
             <header class="topbar">
 
                 <div>
@@ -86,32 +70,30 @@
                     <h2>Your ideas are secured.</h2>
 
                     <p>
-                        Store thoughts, plans and secrets inside your futuristic vault.
+                        Store thoughts, plans and secure notes
+                        inside your futuristic vault.
                     </p>
 
                 </div>
-
-                <button class="theme-btn">
-                    <i class="ri-moon-line"></i>
-                </button>
 
             </header>
 
 
             <!-- HERO -->
+
             <section class="hero-card">
 
                 <div class="hero-content">
 
-                    <span>PRIVATE AI WORKSPACE</span>
+                    <span>PRIVATE WORKSPACE</span>
 
                     <h1>
                         Organize your digital brain with style.
                     </h1>
 
                     <p>
-                        CyberVault helps you manage thoughts, ideas,
-                        goals and secure notes in one futuristic system.
+                        CyberVault helps you manage thoughts,
+                        ideas and secure notes in one system.
                     </p>
 
                     <button class="hero-btn">
@@ -126,13 +108,17 @@
 
 
             <!-- SEARCH -->
+
             <section class="search-section">
 
                 <div class="search-box">
 
                     <i class="ri-search-line"></i>
 
-                    <input type="text" placeholder="Search your notes...">
+                    <input
+                        type="text"
+                        placeholder="Search your notes..."
+                    >
 
                 </div>
 
@@ -140,118 +126,37 @@
 
 
             <!-- NOTES HEADER -->
+
             <section class="notes-header">
 
                 <h2>Recent Notes</h2>
-
-                <button class="filter-btn">
-                    Latest
-                </button>
 
             </section>
 
 
             <!-- NOTES GRID -->
-            <section class="notes-grid">
 
-                <!-- NOTE CARD -->
-                <div class="note-card">
-
-                    <div class="note-top">
-
-                        <span class="tag">Ideas</span>
-
-                        <i class="ri-pushpin-line"></i>
-
-                    </div>
-
-                    <h3>Startup Concept</h3>
-
-                    <p>
-                        Build a futuristic AI productivity system
-                        for creators and developers.
-                    </p>
-
-                    <div class="note-footer">
-
-                        <span>2 mins ago</span>
-
-                        <div class="note-actions">
-
-                            <i class="ri-edit-line"></i>
-                            <i class="ri-delete-bin-line"></i>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- NOTE CARD -->
-                <div class="note-card">
-
-                    <div class="note-top">
-
-                        <span class="tag purple">Personal</span>
-
-                        <i class="ri-lock-line"></i>
-
-                    </div>
-
-                    <h3>Private Goals</h3>
-
-                    <p>
-                        Focus deeply for 90 days and master frontend engineering.
-                    </p>
-
-                    <div class="note-footer">
-
-                        <span>10 mins ago</span>
-
-                        <div class="note-actions">
-
-                            <i class="ri-edit-line"></i>
-                            <i class="ri-delete-bin-line"></i>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- QUOTE CARD -->
-            <section class="quote-card">
-
-                <h2>AI Insight</h2>
-
-                <p>
-                    “Systems create consistency. Motivation creates excuses.”
-                </p>
-
-            </section>
+            <section class="notes-grid"></section>
 
         </main>
 
     </div>
 
+
     <!-- FLOAT BUTTON -->
+
     <button class="floating-btn">
 
         <i class="ri-add-line"></i>
 
     </button>
 
+
     <!-- MODAL -->
 
     <div class="modal">
 
         <div class="modal-content">
-
-            <!-- TOP -->
 
             <div class="modal-top">
 
@@ -262,17 +167,18 @@
             </div>
 
 
-            <!-- INPUT -->
-
-            <input type="text" placeholder="Enter note title..." class="note-title">
-
-
-            <!-- TEXTAREA -->
-
-            <textarea placeholder="Write your thoughts..." class="note-content"></textarea>
+            <input
+                type="text"
+                placeholder="Enter note title..."
+                class="note-title"
+            >
 
 
-            <!-- CATEGORY -->
+            <textarea
+                placeholder="Write your thoughts..."
+                class="note-content"
+            ></textarea>
+
 
             <select class="note-category">
 
@@ -298,8 +204,6 @@
 
             </select>
 
-
-            <!-- SAVE BUTTON -->
 
             <button class="save-note-btn">
                 Save Note

@@ -2,6 +2,8 @@
 
 let floating_btn = document.querySelector(".floating-btn");
 
+let hero_btn = document.querySelector(".hero-btn");
+
 let notes_grid = document.querySelector(".notes-grid");
 
 let search_input = document.querySelector(".search-box input");
@@ -19,44 +21,78 @@ let note_content = document.querySelector(".note-content");
 let note_category = document.querySelector(".note-category");
 
 
-// State
+// state
 
 let notes = [];
 
 
-// Load Storage
+// load storage
 
-let storeData = localStorage.getItem("notes")
-if (storeData) {
+let storeData = localStorage.getItem("notes");
+
+if(storeData){
+
     notes = JSON.parse(storeData);
+
 }
 
 
-// Save Data
+// save data
 
-function saveData() {
-    localStorage.setItem("notes", JSON.stringify(notes));
+function saveData(){
+
+    localStorage.setItem(
+        "notes",
+        JSON.stringify(notes)
+    );
+
 }
 
-// Render Function
 
-function renderNotes() {
+// render function
 
-    // clear old UI
+function renderNotes(notesData){
+
     notes_grid.innerHTML = "";
 
-    // loop notes
-    notes.forEach(function (note) {
 
-        // create div
+    // pinned first
+
+    notesData.sort(function(a,b){
+
+        if(a.pinned !== b.pinned){
+
+            return b.pinned - a.pinned;
+
+        }else{
+
+            return a.id - b.id;
+
+        }
+
+    });
+
+
+    // loop notes
+
+    notesData.forEach(function(note){
+
         let div = document.createElement("div");
 
-        // add class
         div.classList.add("note-card");
 
-        // add content
+
+        // pinned class
+
+        if(note.pinned){
+
+            div.classList.add("pinned");
+
+        }
+
+
         div.innerHTML = `
-        
+
             <div class="note-top">
 
                 <span class="tag">
@@ -81,67 +117,169 @@ function renderNotes() {
 
                 <div class="note-actions">
 
-                    <i class="ri-edit-line"></i>
-
                     <i class="ri-delete-bin-line"></i>
 
                 </div>
 
             </div>
-        
+
         `;
 
 
+        // delete
+
         const del = div.querySelector(".ri-delete-bin-line");
 
-        del.addEventListener("click", function () {
-            notes = notes.filter(function (item) {
-                return item.id !== note.id
-            })
-            saveData()
-            renderNotes()
-        })
+        del.addEventListener("click", function(){
 
-        // show on screen
+            notes = notes.filter(function(item){
+
+                return item.id !== note.id;
+
+            });
+
+            saveData();
+
+            renderNotes(notes);
+
+        });
+
+
+        // pin
+
+        const pin = div.querySelector(".ri-pushpin-line");
+
+        pin.addEventListener("click", function(){
+
+            note.pinned = !note.pinned;
+
+            saveData();
+
+            renderNotes(notes);
+
+        });
+
+
         notes_grid.appendChild(div);
 
     });
 
-
 }
-renderNotes()
 
 
-// Event Listeners
+renderNotes(notes);
 
-floating_btn.addEventListener("click", function () {
+
+// open modal
+
+floating_btn.addEventListener("click", function(){
 
     modal.classList.add("active");
 
 });
 
-close_modal.addEventListener("click", function () {
+
+// hero button
+
+hero_btn.addEventListener("click", function(){
+
+    modal.classList.add("active");
+
+});
+
+
+// close modal
+
+close_modal.addEventListener("click", function(){
 
     modal.classList.remove("active");
 
 });
 
-save_note_btn.addEventListener("click", function () {
-    let notesObj = {
-        title: note_title.value,
-        content: note_content.value,
-        category: note_category.value,
-        id: Date.now(),
-        createdAt: Date.now()
+
+// save note
+
+save_note_btn.addEventListener("click", function(){
+
+    if(
+        note_title.value === "" ||
+        note_content.value === "" ||
+        note_category.value === ""
+    ){
+
+        alert("Fill all fields");
+
+        return;
+
     }
 
-    const clearObjData = document.querySelectorAll("input, textarea, select")
 
-    clearObjData.forEach(function (field) {
+    let notesObj = {
+
+        title: note_title.value,
+
+        content: note_content.value,
+
+        category: note_category.value,
+
+        id: Date.now(),
+
+        createdAt: new Date().toLocaleString(),
+
+        pinned:false
+
+    };
+
+
+    notes.push(notesObj);
+
+
+    saveData();
+
+    renderNotes(notes);
+
+
+    // clear inputs
+
+    const fields = document.querySelectorAll(
+        "input, textarea, select"
+    );
+
+    fields.forEach(function(field){
+
         field.value = "";
-    })
+
+    });
+
+
     modal.classList.remove("active");
-    notes.push(notesObj)
-    saveData()
-    renderNotes()
+
+});
+
+
+// search
+
+search_input.addEventListener("input", function(e){
+
+    let filteredNotes = notes.filter(function(note){
+
+        return note.title
+        .toLowerCase()
+        .includes(
+            e.target.value.toLowerCase()
+        )
+
+        ||
+
+        note.content
+        .toLowerCase()
+        .includes(
+            e.target.value.toLowerCase()
+        );
+
+    });
+
+
+    renderNotes(filteredNotes);
+
 });
