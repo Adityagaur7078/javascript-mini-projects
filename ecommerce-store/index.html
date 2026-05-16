@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>🛍️ TechStore</h1>
+            <div class="cart-icon" id="cartIcon">
+                <span>🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <h3>Filters</h3>
+            <div class="filter-group">
+                <label>
+                    <input type="checkbox" name="category" value="all" checked> All Products
+                </label>
+                <label>
+                    <input type="checkbox" name="category" value="phones"> Phones
+                </label>
+                <label>
+                    <input type="checkbox" name="category" value="laptops"> Laptops
+                </label>
+                <label>
+                    <input type="checkbox" name="category" value="accessories"> Accessories
+                </label>
+            </div>
+
+            <h4>Price Range</h4>
+            <input type="range" id="priceRange" min="0" max="2000" value="2000">
+            <p>Max: $<span id="priceValue">2000</span></p>
+
+            <button id="resetFilter" class="reset-btn">Reset Filters</button>
+        </aside>
+
+        <section class="products-section">
+            <div class="products-container" id="productsContainer"></div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <span class="close" id="closeCart">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-summary">
+                <h3>Total: $<span id="totalPrice">0</span></h3>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
