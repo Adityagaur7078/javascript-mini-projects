@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+
+    background:#0b1020;
+
+    color:white;
+
+    transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+
+/* APP */
+
+.app{
+    width:100%;
+
+    min-height:100vh;
+
+    padding:30px;
+}
+
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar h1{
+    font-size:42px;
+}
+
+.topbar p{
+    margin-top:10px;
+
+    color:#aab2d5;
+}
+
+
+/* THEME BUTTON */
+
+.theme-btn{
+    width:56px;
+    height:56px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.theme-btn:hover{
+    transform:translateY(-4px);
+}
+
+
+/* HERO */
+
+.hero-card{
+    margin-top:40px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    transition:0.4s ease;
+}
+
+.hero-card h2{
+    font-size:48px;
+}
+
+.hero-card p{
+    margin-top:20px;
+
+    max-width:700px;
+
+    line-height:1.8;
+
+    color:#bcc4e3;
+}
+
+
+/* GRID */
+
+.theme-grid{
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:24px;
+}
+
+
+/* THEME CARD */
+
+.theme-card{
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:28px;
+
+    padding:24px;
+
+    transition:
+    0.4s ease,
+    transform 0.3s ease;
+}
+
+.theme-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.25);
+}
+
+
+/* COLOR PREVIEW */
+
+.color-preview{
+    width:100%;
+
+    height:120px;
+
+    border-radius:20px;
+}
+
+
+/* CARD TITLE */
+
+.theme-card h3{
+    margin-top:20px;
+
+    font-size:24px;
+}
+
+
+/* CARD BUTTON */
+
+.theme-card button{
+    margin-top:20px;
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+    border-radius:14px;
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.theme-card button:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   CARD COLORS
+========================= */
+
+
+/* PURPLE CARD */
+
+.theme-card.purple .color-preview{
+    background:#8b5cf6;
+}
+
+.theme-card.purple button{
+    background:#8b5cf6;
+}
+
+
+/* BLUE CARD */
+
+.theme-card.blue .color-preview{
+    background:#3b82f6;
+}
+
+.theme-card.blue button{
+    background:#3b82f6;
+}
+
+
+/* GREEN CARD */
+
+.theme-card.green .color-preview{
+    background:#22c55e;
+}
+
+.theme-card.green button{
+    background:#22c55e;
+}
+
+
+/* ORANGE CARD */
+
+.theme-card.orange .color-preview{
+    background:#f97316;
+}
+
+.theme-card.orange button{
+    background:#f97316;
+}
+
+
+/* =========================
+   THEMES
+========================= */
+
+
+/* PURPLE THEME */
+
+body.purple{
+    background:#140b24;
+}
+
+body.purple .hero-card,
+body.purple .theme-card{
+    background:rgba(139,92,246,0.12);
+
+    border-color:#8b5cf6;
+}
+
+body.purple .theme-btn{
+    background:#8b5cf6;
+}
+
+
+/* BLUE THEME */
+
+body.blue{
+    background:#08131f;
+}
+
+body.blue .hero-card,
+body.blue .theme-card{
+    background:rgba(59,130,246,0.12);
+
+    border-color:#3b82f6;
+}
+
+body.blue .theme-btn{
+    background:#3b82f6;
+}
+
+
+/* GREEN THEME */
+
+body.green{
+    background:#07180f;
+}
+
+body.green .hero-card,
+body.green .theme-card{
+    background:rgba(34,197,94,0.12);
+
+    border-color:#22c55e;
+}
+
+body.green .theme-btn{
+    background:#22c55e;
+}
+
+
+/* ORANGE THEME */
+
+body.orange{
+    background:#1b1208;
+}
+
+body.orange .hero-card,
+body.orange .theme-card{
+    background:rgba(249,115,22,0.12);
+
+    border-color:#f97316;
+}
+
+body.orange .theme-btn{
+    background:#f97316;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+    .topbar{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+    }
+
+    .hero-card h2{
+        font-size:36px;
+    }
+
+}
