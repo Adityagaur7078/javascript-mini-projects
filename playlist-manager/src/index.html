@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+</head>
+
+<body class="bg-slate-100">
+
+    <div class="max-w-4xl mx-auto p-6">
+
+        <!-- Header -->
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+
+            <h1 class="text-4xl font-bold text-slate-800">
+                🎵 Playlist Manager
+            </h1>
+
+            <p class="text-slate-500 mt-2">
+                Manage your favorite songs
+            </p>
+
+        </div>
+
+
+        <!-- Add Song -->
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm mt-6">
+
+            <h2 class="text-xl font-semibold mb-4">
+                Add Song
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+                <input type="text" placeholder="Song Name" class="song-name border rounded-lg px-4 py-3 outline-none">
+
+                <input type="text" placeholder="Artist Name"
+                    class="artist-name border rounded-lg px-4 py-3 outline-none">
+
+            </div>
+
+            <button class="add-song-btn mt-4 bg-slate-800 text-white px-6 py-3 rounded-lg">
+                Add Song
+            </button>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm mt-6">
+
+            <input type="text" placeholder="Search songs..."
+                class="search-input w-full border rounded-lg px-4 py-3 outline-none">
+
+        </div>
+
+
+        <!-- Filter Buttons -->
+
+        <div class="flex gap-3 mt-6">
+
+            <button class="all-songs-btn bg-slate-800 text-white px-5 py-2 rounded-lg">
+                All Songs
+            </button>
+
+            <button class="favorites-btn bg-white border px-5 py-2 rounded-lg">
+                Favorites
+            </button>
+
+        </div>
+
+
+        <!-- Songs Container -->
+
+        <div class="songs-container mt-6 space-y-4">
+
+            <!-- JS Render Here -->
+
+        </div>
+
+
+        <!-- Total Songs -->
+
+        <div class="bg-white rounded-2xl p-5 shadow-sm mt-6">
+
+            <p class="font-medium">
+                Total Songs:
+                <span class="total-songs">0</span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
