@@ -6,65 +6,50 @@ let qr_image = document.querySelector(".qr-image");
 
 let status_message = document.querySelector(".status-message");
 
+function generateQR(){
 
-// Generate QR
-
-function generateQR() {
-
-    if (qr_input.value.trim() === "") {
+    if(qr_input.value.trim() === ""){
 
         status_message.textContent =
-            "Please enter text or URL";
-
-        setTimeout(function () {
-
-            status_message.textContent = "";
-
-        }, 2000);
+        "Please enter text or URL";
 
         return;
     }
 
-    status_message.textContent = "Generating QR Code...";
+    status_message.textContent =
+    "Generating...";
 
     let qrUrl =
-        `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${qr_input.value}`;
+    `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${qr_input.value}`;
 
     qr_image.src = qrUrl;
 
     qr_image.classList.remove("hidden");
 
-    qr_image.onload = function () {
+    qr_image.onload = function(){
 
         status_message.textContent =
-            "QR Code Generated Successfully";
+        "QR Generated Successfully";
 
-        setTimeout(function () {
+        setTimeout(function(){
 
             status_message.textContent = "";
 
-        }, 2000);
+        },2000);
 
     };
-
 }
-
-
-// Button Click
 
 generate_btn.addEventListener(
     "click",
     generateQR
 );
 
-
-// Enter Key
-
 qr_input.addEventListener(
     "keydown",
-    function (e) {
+    function(e){
 
-        if (e.key === "Enter") {
+        if(e.key === "Enter"){
 
             generateQR();
 

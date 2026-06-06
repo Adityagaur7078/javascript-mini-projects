@@ -1,53 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>QR Generator Pro</title>
 
-    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="bg-slate-900 min-h-screen flex justify-center items-center">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
 
-    <div class="bg-slate-800 w-full max-w-md p-6 rounded-2xl">
+    <div class="container">
 
-        <h1 class="text-4xl font-bold text-white text-center">
-            QR Generator
-        </h1>
+        <div class="header">
 
-        <p class="text-slate-400 text-center mt-2">
-            Generate QR codes instantly
-        </p>
+            <h1>QR Generator</h1>
 
-        <input
-            type="text"
-            placeholder="Enter text or URL..."
-            class="qr-input w-full mt-6 bg-slate-700 text-white px-4 py-3 rounded-lg outline-none"
-        >
+            <p>
+                Generate futuristic QR codes instantly
+            </p>
 
-        <button
-            class="generate-btn w-full mt-4 bg-blue-600 text-white py-3 rounded-lg"
-        >
-            Generate QR
-        </button>
+        </div>
 
-        <div class="qr-container mt-6 flex justify-center">
+        <div class="input-box">
+
+            <input
+                type="text"
+                class="qr-input"
+                placeholder="Enter URL or Text..."
+            >
+
+            <button class="generate-btn">
+                Generate QR
+            </button>
+
+        </div>
+
+        <div class="status-message"></div>
+
+        <div class="qr-container">
 
             <img
-                class="qr-image hidden rounded-lg"
+                class="qr-image hidden"
                 alt="QR Code"
             >
 
         </div>
-
-        <p class="status-message text-center text-slate-400 mt-4"></p>
 
     </div>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
