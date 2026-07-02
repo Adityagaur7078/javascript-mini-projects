@@ -10,11 +10,9 @@ body{
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
-    background:#050816;
-    font-family:"Inter",sans-serif;
-    overflow:hidden;
-    color:white;
+    align-items:flex-start;
+    overflow-y:auto;
+    padding:50px 20px;
 }
 
 .glow{

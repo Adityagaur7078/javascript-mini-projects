@@ -8,51 +8,48 @@ let history_list = document.querySelector(".history-list");
 
 let total_rolls = document.querySelector(".total-rolls");
 
-
-
 const diceEmoji = [
-
     "⚀",
     "⚁",
     "⚂",
     "⚃",
     "⚄",
     "⚅"
-
 ];
-
-
 
 let history = [];
 
-
-
-function renderHistory(){
+function renderHistory() {
 
     history_list.innerHTML = "";
 
     total_rolls.textContent = history.length;
 
-    history.forEach(function(item,index){
+    if (history.length === 0) {
+
+        history_list.innerHTML = `
+            <div class="history-item">
+                <span>No Rolls Yet</span>
+            </div>
+        `;
+
+        return;
+    }
+
+    history.forEach(function (item, index) {
 
         let div = document.createElement("div");
 
         div.className = "history-item";
 
         div.innerHTML = `
+            <span>
+                Roll ${history.length - index}
+            </span>
 
-        <span>
-
-            Roll ${index+1}
-
-        </span>
-
-        <strong>
-
-            ${item}
-
-        </strong>
-
+            <strong>
+                ${item.emoji} (${item.value})
+            </strong>
         `;
 
         history_list.appendChild(div);
@@ -61,44 +58,41 @@ function renderHistory(){
 
 }
 
+roll_btn.addEventListener("click", function () {
 
-
-roll_btn.addEventListener("click",function(){
-
-    let randomNumber = Math.floor(Math.random()*6);
+    roll_btn.disabled = true;
 
     dice.classList.add("roll");
 
-    setTimeout(function(){
+    let randomNumber = Math.floor(Math.random() * 6);
+
+    setTimeout(function () {
 
         dice.classList.remove("roll");
 
         dice.textContent = diceEmoji[randomNumber];
 
-    },500);
+        history.unshift({
+            value: randomNumber + 1,
+            emoji: diceEmoji[randomNumber]
+        });
 
-    history.unshift(
+        renderHistory();
 
-        diceEmoji[randomNumber]
+        roll_btn.disabled = false;
 
-    );
+    }, 500);
+
+});
+
+clear_btn.addEventListener("click", function () {
+
+    history = [];
+
+    dice.textContent = "🎲";
 
     renderHistory();
 
 });
-
-
-
-clear_btn.addEventListener("click",function(){
-
-    history=[];
-
-    dice.textContent="🎲";
-
-    renderHistory();
-
-});
-
-
 
 renderHistory();
