@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:#050816;
+
+    color:white;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* ===========================
+   GLOW BACKGROUND
+=========================== */
+
+.glow{
+
+    position:fixed;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    filter:blur(140px);
+
+    z-index:-1;
+
+    animation:float 8s ease-in-out infinite;
+
+}
+
+.glow1{
+
+    background:#8b5cf6;
+
+    top:-120px;
+
+    left:-120px;
+
+}
+
+.glow2{
+
+    background:#2563eb;
+
+    bottom:-120px;
+
+    right:-120px;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(35px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:40px 25px;
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+header h1{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #a5b4fc
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+header p{
+
+    margin-top:15px;
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:30px;
+
+}
+
+.search-input{
+
+    width:100%;
+
+    max-width:600px;
+
+    padding:18px 22px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:17px;
+
+    backdrop-filter:blur(20px);
+
+}
+
+.search-input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/* ===========================
+   COUNTER
+=========================== */
+
+.counter{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.counter h2{
+
+    font-size:28px;
+
+}
+
+.project-count{
+
+    color:#60a5fa;
+
+}
+
+/* ===========================
+   PROJECT GRID
+=========================== */
+
+.projects-container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(300px,1fr)
+    );
+
+    gap:30px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.project-card{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+}
+
+.project-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:#8b5cf6;
+
+    box-shadow:
+    0 20px 45px
+    rgba(139,92,246,.25);
+
+}
+
+.project-card h2{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.project-card p{
+
+    color:#cbd5e1;
+
+    line-height:1.7;
+
+    flex:1;
+
+}
+
+.project-card a{
+
+    margin-top:25px;
+
+    text-decoration:none;
+
+    display:inline-block;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #2563eb
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.project-card a:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    margin-top:70px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    line-height:2;
+
+    padding-bottom:40px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    header h1{
+
+        font-size:42px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .projects-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    header h1{
+
+        font-size:36px;
+
+    }
+
+    .counter h2{
+
+        font-size:24px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .container{
+
+        padding:25px 18px;
+
+    }
+
+    header h1{
+
+        font-size:30px;
+
+    }
+
+    header p{
+
+        font-size:16px;
+
+    }
+
+    .project-card{
+
+        padding:22px;
+
+    }
+
+    .project-card h2{
+
+        font-size:20px;
+
+    }
+
+}
